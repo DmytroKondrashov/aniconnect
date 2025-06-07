@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import '../app.css';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	interface Props extends Record<string, unknown> {
 		children?: Snippet;
@@ -14,3 +15,5 @@
 <div class="container mb-6">
 	{@render children?.()}
 </div>
+
+<Footer/>
