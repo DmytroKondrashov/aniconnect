@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="content is-flex is-flex-direction-row is-justify-content-space-around is-align-items-center">
     <div class="is-flex is-flex-direction-row is-align-items-center">
-      <img src="/aniconnect_logo.png" alt="AniConnect" class="logo" style="width: 100%; height: 66px;" />
+      <img src="/aniconnect_logo_clear.png" alt="AniConnect" class="logo" style="width: 100%; height: 66px;" />
     </div>
     <div class="is-flex is-flex-direction-row is-align-items-center is-justify-content-center">
       <p class="mb-0">Presented by</p>
