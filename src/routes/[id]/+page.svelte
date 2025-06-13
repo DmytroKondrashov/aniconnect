@@ -2,6 +2,7 @@
 	import FullScreenshot from '$lib/components/FullScreenshot.svelte';
 	import FullVideo from '$lib/components/FullVideo.svelte';
 	import type Anime from '$lib/interfaces/Anime';
+	import { onMount } from 'svelte';
 	import type { PageData } from '../$types';
 
 	let { data }: { data: PageData } = $props();
@@ -9,8 +10,26 @@
 	let visibleVideo = $state<string | null>(null);
 	let visibleScreenshot = $state<string | null>(null);
 	const permittedFieldsList = ['name', 'genres', 'descriptionHtml', 'screenshots', 'videos', ];
+	let playerData = $state({});
+	$inspect(playerData)
 
-	$inspect(visibleScreenshot)
+	onMount(() => {
+		fetch(`https://api.anilibria.tv/v3/title/search?search=${data.anime.name}`)
+			.then(res => res.json())
+			.then(anilibriaAnime => {
+				console.log(anilibriaAnime.list[0].id);
+				if (anilibriaAnime.list.length > 0) {
+					return fetch(`https://api.anilibria.tv/v3/title?id=${anilibriaAnime.list[0].id}`);
+				}
+			})
+			.then(res => res ? res.json() : null)
+			.then(data => {
+				if (data) {
+					playerData = data.player;
+				}
+			})
+			.catch(error => console.error('Error fetching data:', error));
+	});
 
 	const fieldNames: Record<typeof permittedFieldsList[number], string> = {
 		name: '',
