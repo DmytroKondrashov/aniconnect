@@ -13,10 +13,10 @@
 	let loading = $state(false);
 	let searchQuery = $state('');
 
-	const searchAnime = () => {
+	function searchAnime(limit: number, page: number, search: string) {
 		loading = true;
 		urql
-		.query(getAnimeList, { limit: $limit, page: $page, search: $search })
+		.query(getAnimeList, { limit, page, search })
 		.toPromise()
 		.then(({ data, error }) => {
 			if (data?.animes) {
@@ -32,7 +32,7 @@
 	};
 
 	$effect(() => {
-		searchAnime();
+		searchAnime($limit, $page, $search);
 		if ($search !== '') {
 			searchQuery = $search;
 		}
