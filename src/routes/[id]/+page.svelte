@@ -4,14 +4,14 @@
 	import type Anime from '$lib/interfaces/Anime';
 	import { onMount } from 'svelte';
 	import type { PageData } from '../$types';
+	import Player from '$lib/components/Player.svelte';
 
 	let { data }: { data: PageData } = $props();
 
 	let visibleVideo = $state<string | null>(null);
 	let visibleScreenshot = $state<string | null>(null);
 	const permittedFieldsList = ['name', 'genres', 'descriptionHtml', 'screenshots', 'videos', ];
-	let playerData = $state({});
-	$inspect(playerData)
+	let playerData = $state(undefined);
 
 	onMount(() => {
 		fetch(`https://api.anilibria.tv/v3/title/search?search=${data.anime.name}`)
@@ -101,6 +101,10 @@
 		{/if}
 	{/each}
 </dl>
+
+{#if playerData !== undefined}
+  <Player playerData={playerData} />
+{/if}
 
 <FullVideo bind:src={visibleVideo} alt="Anime Video" />
 <FullScreenshot 
