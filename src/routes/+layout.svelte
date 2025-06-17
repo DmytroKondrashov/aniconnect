@@ -11,9 +11,29 @@
 	let { children }: Props = $props();
 </script>
 
-<Navbar />
-<div class="container mb-6">
-	{@render children?.()}
+<div class="page-container">
+	<Navbar />
+	<main class="main-content">
+		<div class="container mb-6">
+			{@render children?.()}
+		</div>
+	</main>
+	<Footer />
 </div>
 
-<Footer/>
+<style>
+	.page-container {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	.main-content {
+		flex: 1 0 auto;
+	}
+
+	:global(body) {
+		margin: 0;
+		min-height: 100vh;
+	}
+</style>
