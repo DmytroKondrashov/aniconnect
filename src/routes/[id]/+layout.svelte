@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
-	import type { PageData } from '../$types';
+	import type { Snippet } from 'svelte';
+	import type { PageData } from './$types';
 
 	interface Props extends Record<string, unknown> {
 		data: PageData;
@@ -8,7 +8,6 @@
 	}
 
 	let { data, children }: Props = $props();
-	data.anime = { poster: data.anime.poster, ...data.anime };
 
 	const permittedFields = ['poster', 'name', 'russian', 'english', 'japanese', 'episodes', 'studios'];
 

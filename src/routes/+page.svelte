@@ -67,7 +67,7 @@
 				{/each}
 			</div>
 		</section>
-	<Pagination bind:page={$page} bind:limit={$limit} />
+		<Pagination bind:page={$page} bind:limit={$limit} />
 	{:else}
 		<span>No animes found</span>
 	{/if}

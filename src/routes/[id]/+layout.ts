@@ -5,11 +5,11 @@ import urql from '$lib/urql';
 export async function load({ params }) {
 	const { id } = params;
 
-	let loading = true;
-	let errors = [];
-	let anime = null;
+	let loading: boolean = true;
+	let errors: string[] = [];
+	let anime: Anime = null!;
 
-	const { data, error } = await urql.query(getAnime, { id }).toPromise();
+	const { data, error } = await urql.query<{ animes: Anime[] }>(getAnime, { id }).toPromise();
 
 	if (data?.animes) {
 		anime = data?.animes[0];
