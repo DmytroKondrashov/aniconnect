@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
-	import type { PageData } from '../$types';
+	import type { Snippet } from 'svelte';
+	import type { PageData } from './$types';
+	import Anime from '$lib/interfaces/Anime';
 
 	interface Props extends Record<string, unknown> {
 		data: PageData;
@@ -8,9 +9,8 @@
 	}
 
 	let { data, children }: Props = $props();
-	data.anime = { poster: data.anime.poster, ...data.anime };
 
-	const permittedFields = ['poster', 'name', 'russian', 'english', 'japanese', 'episodes', 'studios'];
+	const permittedFields = ['poster', 'name', 'russian', 'english', 'japanese', 'episodes', 'studios'] as const;
 
 	const fieldNames: Record<typeof permittedFields[number], string> = {
 		poster: '',
