@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { PageData } from './$types';
-	import Anime from '$lib/interfaces/Anime';
+	import type Anime from '$lib/interfaces/Anime';
 
 	interface Props extends Record<string, unknown> {
 		data: PageData;
