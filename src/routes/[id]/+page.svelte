@@ -3,10 +3,10 @@
 	import FullVideo from '$lib/components/FullVideo.svelte';
 	import type Anime from '$lib/interfaces/Anime';
 	import { onMount } from 'svelte';
-	import type { PageData } from '../$types';
-	import Player from '$lib/components/Player.svelte';
+	// import Player from '$lib/components/Player.svelte';
+	// import { Player, Ui, DefaultUi } from '@vime/svelte';
 
-	let { data }: { data: PageData } = $props();
+	let { data }: { data: { anime: Anime; loading: boolean; errors: string[] } } = $props();
 
 	let visibleVideo = $state<string | null>(null);
 	let visibleScreenshot = $state<string | null>(null);
@@ -97,14 +97,20 @@
 			<dt class="mt-4 subtitle is-capitalized">
 				{fieldNames[key]}
 			</dt>
-			<dd>{@render valueFormatter(key, data.anime[key])}</dd>
+			<dd>{@render valueFormatter(key, data.anime[key as keyof Anime])}</dd>
 		{/if}
 	{/each}
 </dl>
 
-{#if playerData !== undefined}
+<!-- {#if playerData !== undefined}
   <Player playerData={playerData} />
-{/if}
+{/if} -->
+
+<!-- <Player>
+  <Ui>
+		<DefaultUi />
+  </Ui>
+</Player> -->
 
 <FullVideo bind:src={visibleVideo} alt="Anime Video" />
 <FullScreenshot 
