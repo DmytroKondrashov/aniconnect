@@ -4,6 +4,7 @@
 	import type Anime from '$lib/interfaces/Anime';
 	import { onMount } from 'svelte';
 	import Player from '$lib/components/Player.svelte';
+	import 'vidstack/bundle';
 
 	let { data }: { data: { anime: Anime; loading: boolean; errors: string[] } } = $props();
 
