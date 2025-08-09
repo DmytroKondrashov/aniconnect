@@ -3,10 +3,7 @@
 	import FullVideo from '$lib/components/FullVideo.svelte';
 	import type Anime from '$lib/interfaces/Anime';
 	import { onMount } from 'svelte';
-	// import Player from '$lib/components/Player.svelte';
-
-	// this import is causing the error!
-	// import { Player, Ui, DefaultUi } from '@vime/svelte';
+	import Player from '$lib/components/Player.svelte';
 
 	let { data }: { data: { anime: Anime; loading: boolean; errors: string[] } } = $props();
 
@@ -15,23 +12,23 @@
 	const permittedFieldsList = ['name', 'genres', 'descriptionHtml', 'screenshots', 'videos', ];
 	let playerData = $state(undefined);
 
-	// onMount(() => {
-	// 	fetch(`https://api.anilibria.tv/v3/title/search?search=${data.anime.name}`)
-	// 		.then(res => res.json())
-	// 		.then(anilibriaAnime => {
-	// 			console.log(anilibriaAnime.list[0].id);
-	// 			if (anilibriaAnime.list.length > 0) {
-	// 				return fetch(`https://api.anilibria.tv/v3/title?id=${anilibriaAnime.list[0].id}`);
-	// 			}
-	// 		})
-	// 		.then(res => res ? res.json() : null)
-	// 		.then(data => {
-	// 			if (data) {
-	// 				playerData = data.player;
-	// 			}
-	// 		})
-	// 		.catch(error => console.error('Error fetching data:', error));
-	// });
+	onMount(() => {
+		fetch(`https://api.anilibria.tv/v3/title/search?search=${data.anime.name}`)
+			.then(res => res.json())
+			.then(anilibriaAnime => {
+				console.log(anilibriaAnime.list[0].id);
+				if (anilibriaAnime.list.length > 0) {
+					return fetch(`https://api.anilibria.tv/v3/title?id=${anilibriaAnime.list[0].id}`);
+				}
+			})
+			.then(res => res ? res.json() : null)
+			.then(data => {
+				if (data) {
+					playerData = data.player;
+				}
+			})
+			.catch(error => console.error('Error fetching data:', error));
+	});
 
 	const fieldNames: Record<typeof permittedFieldsList[number], string> = {
 		name: '',
@@ -104,9 +101,9 @@
 	{/each}
 </dl>
 
-<!-- {#if playerData !== undefined}
+{#if playerData !== undefined}
   <Player playerData={playerData} />
-{/if} -->
+{/if}
 
 <!-- <Player>
   <Ui>
