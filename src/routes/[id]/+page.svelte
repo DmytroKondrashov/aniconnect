@@ -112,6 +112,11 @@
   </Ui>
 </Player> -->
 
+<media-player title="Sprite Fight" src="https://files.vidstack.io/sprite-fight/720p.mp4">
+  <media-provider></media-provider>
+  <media-video-layout thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt"></media-video-layout>
+</media-player>
+
 <FullVideo bind:src={visibleVideo} alt="Anime Video" />
 <FullScreenshot 
 	bind:src={visibleScreenshot} 
