@@ -30,7 +30,6 @@
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@urql/svelte": "^4.2.3",
 		"@vime/core": "^5.4.1",
-		"@vime/svelte": "^5.4.1",
 		"postgres": "^3.4.7"
 	}
 }
