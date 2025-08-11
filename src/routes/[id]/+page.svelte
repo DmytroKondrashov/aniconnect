@@ -22,11 +22,17 @@
 					return fetch(`https://api.anilibria.tv/v3/title?id=${anilibriaAnime.list[0].id}`);
 				}
 			})
-			.then(res => res ? res.json() : null)
+			.then(res => {
+				console.log('==============')
+				console.log(res)
+				return res ? res.json() : null
+			})
 			.then(data => {
 				if (data) {
 					playerData = data.player;
 				}
+				console.log('==============')
+				console.log(data)
 			})
 			.catch(error => console.error('Error fetching data:', error));
 	});
@@ -105,12 +111,6 @@
 {#if playerData !== undefined}
   <Player playerData={playerData} />
 {/if}
-
-<!-- <Player>
-  <Ui>
-		<DefaultUi />
-  </Ui>
-</Player> -->
 
 <media-player title="Sprite Fight" src="https://files.vidstack.io/sprite-fight/720p.mp4">
   <media-provider></media-provider>
