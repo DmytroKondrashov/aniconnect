@@ -14,12 +14,17 @@
 	let playerData = $state(undefined);
 
 	onMount(() => {
-		fetch(`https://api.anilibria.tv/v3/title/search?search=${data.anime.name}`)
-			.then(res => res.json())
+		console.log('+++++++++++++++++++++++')
+		fetch(`/api/anilibria/search?search=${encodeURIComponent(data.anime.name)}`)
+			.then(res => {
+				console.log('==============')
+				console.log(res)
+				return res.json()
+			})
 			.then(anilibriaAnime => {
 				console.log(anilibriaAnime.list[0].id);
 				if (anilibriaAnime.list.length > 0) {
-					return fetch(`https://api.anilibria.tv/v3/title?id=${anilibriaAnime.list[0].id}`);
+					return fetch(`/api/anilibria/title?id=${anilibriaAnime.list[0].id}`);
 				}
 			})
 			.then(res => {
