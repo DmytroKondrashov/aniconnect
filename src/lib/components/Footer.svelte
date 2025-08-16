@@ -1,5 +1,5 @@
 <footer class="bg-gray-100">
-  <div class="flex flex-row justify-between items-center p-4">
+  <div class="flex flex-row justify-between p-4">
     <div class="flex flex-row items-center max-w-60">
       <img src="/aniconnect_logo_clear.png" alt="AniConnect" />
     </div>
