@@ -11,9 +11,9 @@
 	let { children }: Props = $props();
 </script>
 
-<div class="page-container">
+<div class="page-container flex flex-col min-h-screen">
 	<Navbar />
-	<main class="main-content">
+	<main class="main-content flex-grow">
 		<div class="max-w-7xl mx-auto px-4 mb-6">
 			{@render children?.()}
 		</div>
@@ -22,18 +22,4 @@
 </div>
 
 <style>
-	.page-container {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	.main-content {
-		flex: 1 0 auto;
-	}
-
-	:global(body) {
-		margin: 0;
-		min-height: 100vh;
-	}
 </style>
