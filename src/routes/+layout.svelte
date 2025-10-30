@@ -14,7 +14,7 @@
 <div class="page-container">
 	<Navbar />
 	<main class="main-content">
-		<div class="container mb-6">
+		<div class="max-w-7xl mx-auto px-4 mb-6">
 			{@render children?.()}
 		</div>
 	</main>

@@ -2,7 +2,9 @@
   let { src = $bindable(), alt } = $props();
 </script>
 
-<div class="modal" class:is-active={src !== null} onclick={() => src = null}>
-  <div class="modal-background"></div>
-    <img {src} {alt} width='1280px' height='720px' style="z-index: 1000;" />
+{#if src}
+<div class="fixed inset-0 z-50 flex items-center justify-center" onclick={() => src = null}>
+  <div class="absolute inset-0 bg-black/70"></div>
+  <img {src} {alt} class="relative z-10 max-w-[90vw] max-h-[85vh] object-contain" />
 </div>
+{/if}

@@ -2,22 +2,18 @@
   let { src = $bindable(), alt } = $props();
 </script>
 
-<div class="modal" class:is-active={src !== null} onclick={() => src = null}>
-  <div class="modal-background"></div>
-    <iframe {src} title={alt} loading="lazy" frameborder="0" 
-    allowfullscreen width='1280px' height='720px'></iframe>
+{#if src}
+<div class="fixed inset-0 z-50 flex items-center justify-center" onclick={() => src = null}>
+  <div class="absolute inset-0 bg-black/70"></div>
+  <div class="relative z-10 w-[90vw] max-w-5xl aspect-video">
+    <iframe 
+      {src} 
+      title={alt} 
+      loading="lazy" 
+      frameborder="0" 
+      allowfullscreen 
+      class="w-full h-full rounded"
+    ></iframe>
+  </div>
 </div>
-
-<style>
-.iframe-container {
-    width: 100%;
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  iframe {
-    z-index: 1000;
-  }
-</style>
+{/if}
