@@ -39,29 +39,37 @@
 	});
 </script>
 
-<div class="mb-6 is-flex is-justify-content-center">
-	<div class="field has-addons p-2" style="width: 100%; max-width: 600px;">
-		<p class="control" style="flex-grow: 1;">
-			<input class="input" type="text" placeholder="Find your anime" style="width: 100%;" bind:value={searchQuery} 
+<div class="mb-6 flex justify-center">
+	<div class="w-full max-w-xl p-2">
+		<div class="flex">
+			<input 
+				class="flex-1 w-full rounded-l-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+				type="text" 
+				placeholder="Find your anime" 
+				bind:value={searchQuery}
 				onkeydown={(e) => {
 					if (e.key === 'Enter') {
 						$search = searchQuery;
 					}
-				}} />
-		</p>
-		<p class="control">
-			<button class="button" onclick={() => $search = searchQuery}>Search</button>
-		</p>
+				}}
+			/>
+			<button 
+				class="rounded-r-md bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors"
+				onclick={() => $search = searchQuery}
+			>
+				Search
+			</button>
+		</div>
 	</div>
 </div>
 <ul>
 	{#if loading}
 		<span>Loading...</span>
 	{:else if animes}
-		<section class="fixed-grid has-4-cols">
-			<div class="grid">
+		<section>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 				{#each animes as anime}
-					<AnimeCard class="cell" {anime} />
+					<AnimeCard class="" {anime} />
 				{:else}
 					<span>No animes found</span>
 				{/each}
