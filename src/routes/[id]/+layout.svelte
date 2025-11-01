@@ -28,8 +28,8 @@
 		<span>Loading...</span>
 	{:else if data.anime}
 		<div class="fixed-grid has-4-cols">
-			<div class="grid">
-				<div class="cell">
+			<div class="grid grid-cols-4">
+				<div class="cell col-span-1">
 					{#each permittedFields as key}
 						{#if key === 'poster'}
 							<figure class="image mb-4">
@@ -45,7 +45,7 @@
 						{/if}
 					{/each}
 				</div>
-				<div class="cell is-col-span-3">
+				<div class="cell col-span-3">
 					{@render children?.()}
 				</div>
 			</div>
