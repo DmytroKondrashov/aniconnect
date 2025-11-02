@@ -38,48 +38,6 @@
 	}
 </script>
 
-<!-- {#snippet valueFormatter(key: string, value: unknown)}
-	{#if key === 'name'}
-		<span class='title'>{value}</span>
-	{:else if key === 'genres'}
-		{@const genres = value as Anime['genres']}
-		{#each genres as { id, name, russian } (id)}
-			<span class="tag is-light mr-2">{russian}</span>
-		{/each}
-	{:else if key === 'videos'}
-		{@const videos = value as Anime['videos']}
-		<div class="is-flex is-flex-wrap-nowrap is-flex-direction-row" style="overflow-x: scroll;">
-			{#each videos as { id, playerUrl, imageUrl } (id)}
-				{#if playerUrl.includes('youtube.com')}
-					<img class="mr-2" src={imageUrl} loading="lazy" alt="Anime Video Preview" onclick={() => visibleVideo = playerUrl} />
-				{/if}
-			{/each}
-		</div>
-	{:else if key === 'screenshots'}
-		{@const screenshots = value as Anime['screenshots']}
-		<div class="is-flex is-flex-wrap-nowrap is-flex-direction-row" style="overflow-x: scroll;">
-			{#each screenshots as { id, x332Url, originalUrl } (id)}
-				<img class="mr-2" src={x332Url} loading="lazy" alt="Anime Screenshot" onclick={() => visibleScreenshot = originalUrl}/>
-			{/each}
-		</div>
-	{:else if key === 'descriptionHtml'}
-		<span>{@html value}</span>
-	{:else}
-		<span>{value}</span>
-	{/if}
-{/snippet}
-
-<dl>
-	{#each permittedFieldsList as key}
-		{#if permittedFieldsList.includes(key)}
-			<dt class="mt-4 subtitle is-capitalized">
-				{fieldNames[key]}
-			</dt>
-			<dd>{@render valueFormatter(key, data.anime[key])}</dd>
-		{/if}
-	{/each}
-</dl> -->
-
 {#snippet valueFormatter(key: string, value: unknown)}
 	{#if key === 'name'}
 		<span class='text-2xl font-bold text-gray-900'>{value}</span>
