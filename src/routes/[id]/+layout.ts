@@ -1,4 +1,4 @@
-import type Anime from '$lib/interfaces/Anime.js';
+import type { Anime } from '$lib/types/anime';
 import { getAnime } from '$lib/queries/getAnime';
 import urql from '$lib/urql';
 
