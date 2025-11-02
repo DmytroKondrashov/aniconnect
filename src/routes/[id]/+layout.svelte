@@ -10,17 +10,25 @@
 
 	let { data, children }: Props = $props();
 
-	const permittedFields = ['poster', 'name', 'russian', 'english', 'japanese', 'episodes', 'studios'] as const;
+	const permittedFields = [
+		'poster',
+		'name',
+		'russian',
+		'english',
+		'japanese',
+		'episodes',
+		'studios'
+	] as const;
 
-	const fieldNames: Record<typeof permittedFields[number], string> = {
+	const fieldNames: Record<(typeof permittedFields)[number], string> = {
 		poster: '',
 		name: 'Name',
 		russian: 'Russian',
 		english: 'English',
 		japanese: 'Japanese',
 		episodes: 'Episodes',
-		studios: 'Studios',
-	}
+		studios: 'Studios'
+	};
 </script>
 
 <ul>
@@ -37,10 +45,15 @@
 							</figure>
 						{:else if key === 'studios'}
 							{@const studios = data.anime[key] as Anime['studios']}
-							<span class="mb-2"><b class="is-capitalized">{fieldNames[key]}:</b> {studios.map(({ name }) => name).join(', ')}</span>
+							<span class="mb-2"
+								><b class="is-capitalized">{fieldNames[key]}:</b>
+								{studios.map(({ name }) => name).join(', ')}</span
+							>
 						{:else}
 							<div class="is-flex is-flex-direction-column">
-								<span class="mb-2"><b class="is-capitalized">{fieldNames[key]}:</b> {data.anime[key]}</span>
+								<span class="mb-2"
+									><b class="is-capitalized">{fieldNames[key]}:</b> {data.anime[key]}</span
+								>
 							</div>
 						{/if}
 					{/each}

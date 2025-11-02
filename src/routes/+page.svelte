@@ -16,20 +16,20 @@
 	function searchAnime(limit: number, page: number, search: string) {
 		loading = true;
 		urql
-		.query(getAnimeList, { limit, page, search })
-		.toPromise()
-		.then(({ data, error }) => {
-			if (data?.animes) {
-				animes = data.animes;
-			}
+			.query(getAnimeList, { limit, page, search })
+			.toPromise()
+			.then(({ data, error }) => {
+				if (data?.animes) {
+					animes = data.animes;
+				}
 
-			if (error?.message) {
-				errors.push(error.message);
-			}
-		})
-		.catch((error) => errors.push(error.toString()))
-		.finally(() => loading = false);
-	};
+				if (error?.message) {
+					errors.push(error.message);
+				}
+			})
+			.catch((error) => errors.push(error.toString()))
+			.finally(() => (loading = false));
+	}
 
 	$effect(() => {
 		searchAnime($limit, $page, $search);
@@ -42,10 +42,10 @@
 <div class="mb-6 flex justify-center">
 	<div class="w-full max-w-xl p-2">
 		<div class="flex">
-			<input 
-				class="flex-1 w-full rounded-l-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-				type="text" 
-				placeholder="Find your anime" 
+			<input
+				class="flex-1 w-full rounded-l-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+				type="text"
+				placeholder="Find your anime"
 				bind:value={searchQuery}
 				onkeydown={(e) => {
 					if (e.key === 'Enter') {
@@ -53,9 +53,9 @@
 					}
 				}}
 			/>
-			<button 
+			<button
 				class="rounded-r-md bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors"
-				onclick={() => $search = searchQuery}
+				onclick={() => ($search = searchQuery)}
 			>
 				Search
 			</button>

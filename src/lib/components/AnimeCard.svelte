@@ -21,7 +21,13 @@
 	</div>
 </a> -->
 
-<a class={['block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden', className]} href="/{anime.id}">
+<a
+	class={[
+		'block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden',
+		className
+	]}
+	href="/{anime.id}"
+>
 	<div class="aspect-[3/4] overflow-hidden">
 		<img src={anime.poster.mainUrl} alt="Placeholder image" class="w-full h-full object-cover" />
 	</div>
