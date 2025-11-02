@@ -103,7 +103,11 @@
 			<span class="text-gray-700">No screenshots found</span>
 		{/if}
 	{:else if key === 'descriptionHtml'}
-		<span class="text-gray-700 leading-relaxed">{@html value}</span>
+		{#if value}
+			<span class="text-gray-700 leading-relaxed">{@html value}</span>
+		{:else}
+			<span class="text-gray-700">No description found</span>
+		{/if}
 	{:else}
 		<span class="text-gray-700">{value}</span>
 	{/if}
