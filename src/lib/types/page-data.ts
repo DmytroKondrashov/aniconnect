@@ -5,4 +5,3 @@ export type AnimePageData = {
 	loading: boolean;
 	errors: string[];
 };
-

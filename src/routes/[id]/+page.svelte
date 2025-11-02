@@ -8,7 +8,13 @@
 
 	let visibleVideo = $state<string | null>(null);
 	let visibleScreenshot = $state<string | null>(null);
-	const permittedFieldsList = ['name', 'genres', 'descriptionHtml', 'screenshots', 'videos'] as const satisfies readonly (keyof Anime)[];
+	const permittedFieldsList = [
+		'name',
+		'genres',
+		'descriptionHtml',
+		'screenshots',
+		'videos'
+	] as const satisfies readonly (keyof Anime)[];
 
 	$inspect(visibleScreenshot);
 
