@@ -1,21 +1,20 @@
 <script lang="ts">
 	import FullScreenshot from '$lib/components/FullScreenshot.svelte';
 	import FullVideo from '$lib/components/FullVideo.svelte';
-	import type Anime from '$lib/interfaces/Anime';
-	import type { PageData } from '../$types';
+	import type { Anime } from '$lib/types/anime';
+	import type { AnimePageData } from '$lib/types/page-data';
 
-	let { data }: { data: PageData } = $props();
+	let { data }: { data: AnimePageData } = $props();
 
 	let visibleVideo = $state<string | null>(null);
 	let visibleScreenshot = $state<string | null>(null);
-	const permittedFieldsList = ['name', 'genres', 'descriptionHtml', 'screenshots', 'videos'];
+	const permittedFieldsList = ['name', 'genres', 'descriptionHtml', 'screenshots', 'videos'] as const satisfies readonly (keyof Anime)[];
 
 	$inspect(visibleScreenshot);
 
 	const fieldNames: Record<(typeof permittedFieldsList)[number], string> = {
 		name: '',
 		genres: '',
-		studios: 'Studios',
 		videos: 'Videos',
 		screenshots: 'Screenshots',
 		descriptionHtml: ''
@@ -92,7 +91,7 @@
 			<dt class="text-lg font-semibold text-gray-900 capitalize border-b border-gray-200 pb-1">
 				{fieldNames[key]}
 			</dt>
-			<dd class="mt-2">{@render valueFormatter(key, data.anime[key])}</dd>
+			<dd class="mt-2">{@render valueFormatter(key, data.anime[key as keyof Anime])}</dd>
 		{/if}
 	{/each}
 </dl>

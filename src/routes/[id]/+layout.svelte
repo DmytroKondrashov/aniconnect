@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { PageData } from './$types';
-	import type Anime from '$lib/interfaces/Anime';
+	import type { AnimePageData } from '$lib/types/page-data';
+	import type { Anime } from '$lib/types/anime';
 
 	interface Props extends Record<string, unknown> {
-		data: PageData;
+		data: AnimePageData;
 		children: Snippet;
 	}
 
