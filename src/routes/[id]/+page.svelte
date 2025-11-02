@@ -55,13 +55,18 @@
 				{#if playerUrl.includes('youtube.com')}
 					<!-- <iframe class="mr-2" src={playerUrl.replace('watch?v=', 'embed/')}  
 					frameborder="0" allowfullscreen loading="lazy" title="Anime Video"></iframe> -->
-					<img
-						class="flex-shrink-0 w-40 h-24 object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
-						src={imageUrl}
-						loading="lazy"
-						alt="Anime Video Preview"
+					<button
+						type="button"
+						class="flex-shrink-0 p-0 border-0 bg-transparent cursor-pointer hover:opacity-80 transition-opacity"
 						onclick={() => (visibleVideo = playerUrl)}
-					/>
+					>
+						<img
+							class="w-40 h-24 object-cover rounded"
+							src={imageUrl}
+							loading="lazy"
+							alt="Anime Video Preview"
+						/>
+					</button>
 				{/if}
 			{/each}
 		</div>
@@ -69,13 +74,18 @@
 		{@const screenshots = value as Anime['screenshots']}
 		<div class="flex flex-nowrap overflow-x-auto gap-2 pb-2">
 			{#each screenshots as { id, x332Url, originalUrl } (id)}
-				<img
-					class="flex-shrink-0 w-40 h-24 object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
-					src={x332Url}
-					loading="lazy"
-					alt="Anime Screenshot"
+				<button
+					type="button"
+					class="flex-shrink-0 p-0 border-0 bg-transparent cursor-pointer hover:opacity-80 transition-opacity"
 					onclick={() => (visibleScreenshot = originalUrl)}
-				/>
+				>
+					<img
+						class="w-40 h-24 object-cover rounded"
+						src={x332Url}
+						loading="lazy"
+						alt="Anime Screenshot"
+					/>
+				</button>
 			{/each}
 		</div>
 	{:else if key === 'descriptionHtml'}
