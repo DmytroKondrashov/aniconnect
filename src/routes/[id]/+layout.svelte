@@ -35,32 +35,30 @@
 	{#if data.loading}
 		<span>Loading...</span>
 	{:else if data.anime}
-		<div class="fixed-grid has-4-cols">
-			<div class="grid grid-cols-4">
-				<div class="cell col-span-1">
-					{#each permittedFields as key}
-						{#if key === 'poster'}
-							<figure class="image mb-4">
-								<img src={data.anime[key].mainUrl} alt="Placeholder image" />
-							</figure>
-						{:else if key === 'studios'}
-							{@const studios = data.anime[key] as Anime['studios']}
-							<span class="mb-2"
-								><b class="is-capitalized">{fieldNames[key]}:</b>
-								{studios.map(({ name }) => name).join(', ')}</span
+		<div class="flex flex-col md:flex-row gap-6">
+			<div class="flex-shrink-0 md:w-64 w-full">
+				{#each permittedFields as key}
+					{#if key === 'poster'}
+						<figure class="mb-4">
+							<img src={data.anime[key].mainUrl} alt="Anime poster" class="w-full rounded-lg shadow-md" />
+						</figure>
+					{:else if key === 'studios'}
+						{@const studios = data.anime[key] as Anime['studios']}
+						<span class="mb-2 block text-sm"
+							><b class="capitalize">{fieldNames[key]}:</b>
+							{studios.map(({ name }) => name).join(', ')}</span
+						>
+					{:else}
+						<div class="flex flex-col">
+							<span class="mb-2 block text-sm"
+								><b class="capitalize">{fieldNames[key]}:</b> {data.anime[key]}</span
 							>
-						{:else}
-							<div class="is-flex is-flex-direction-column">
-								<span class="mb-2"
-									><b class="is-capitalized">{fieldNames[key]}:</b> {data.anime[key]}</span
-								>
-							</div>
-						{/if}
-					{/each}
-				</div>
-				<div class="cell col-span-3">
-					{@render children?.()}
-				</div>
+						</div>
+					{/if}
+				{/each}
+			</div>
+			<div class="flex-1 min-w-0">
+				{@render children?.()}
 			</div>
 		</div>
 	{:else}

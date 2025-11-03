@@ -45,17 +45,17 @@
 
 {#snippet valueFormatter(key: string, value: unknown)}
 	{#if key === 'name'}
-		<span class="text-2xl font-bold text-gray-900">{value}</span>
+		<span class="text-xl sm:text-2xl font-bold text-gray-900">{value}</span>
 	{:else if key === 'genres'}
 		{@const genres = value as Anime['genres']}
 		{#each genres as { id, name, russian } (id)}
-			<span class="inline-block bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full mr-2 mb-1"
+			<span class="inline-block bg-gray-100 text-gray-800 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full mr-2 mb-1"
 				>{russian}</span
 			>
 		{/each}
 	{:else if key === 'videos'}
 		{@const videos = value as Anime['videos']}
-		<div class="flex flex-nowrap overflow-x-auto gap-2 pb-2">
+		<div class="flex flex-nowrap overflow-x-auto gap-2 pb-2 -mx-2 sm:-mx-4 px-2 sm:px-4">
 			<!-- TODO: show imageUrl thumbnail and "full" video on click -->
 			{#if videos.length > 0}
 				{#each videos as { id, playerUrl, imageUrl } (id)}
@@ -68,7 +68,7 @@
 							onclick={() => (visibleVideo = playerUrl)}
 						>
 							<img
-								class="w-40 h-24 object-cover rounded"
+								class="w-32 sm:w-40 h-20 sm:h-24 object-cover rounded"
 								src={imageUrl}
 								loading="lazy"
 								alt="Anime Video Preview"
@@ -77,13 +77,13 @@
 					{/if}
 				{/each}
 			{:else}
-				<span class="text-gray-700">No videos found</span>
+				<span class="text-sm sm:text-base text-gray-700">No videos found</span>
 			{/if}
 		</div>
 	{:else if key === 'screenshots'}
 		{@const screenshots = value as Anime['screenshots']}
 		{#if screenshots.length > 0}
-			<div class="flex flex-nowrap overflow-x-auto gap-2 pb-2">
+			<div class="flex flex-nowrap overflow-x-auto gap-2 pb-2 -mx-2 sm:-mx-4 px-2 sm:px-4">
 				{#each screenshots as { id, x332Url, originalUrl } (id)}
 					<button
 						type="button"
@@ -91,7 +91,7 @@
 						onclick={() => (visibleScreenshot = originalUrl)}
 					>
 						<img
-							class="w-40 h-24 object-cover rounded"
+							class="w-32 sm:w-40 h-20 sm:h-24 object-cover rounded"
 							src={x332Url}
 							loading="lazy"
 							alt="Anime Screenshot"
@@ -100,13 +100,13 @@
 					{/each}
 				</div>
 		{:else}
-			<span class="text-gray-700">No screenshots found</span>
+			<span class="text-sm sm:text-base text-gray-700">No screenshots found</span>
 		{/if}
 	{:else if key === 'descriptionHtml'}
 		{#if value}
-			<span class="text-gray-700 leading-relaxed">{@html value}</span>
+			<span class="text-sm sm:text-base text-gray-700 leading-relaxed">{@html value}</span>
 		{:else}
-			<span class="text-gray-700">No description found</span>
+			<span class="text-sm sm:text-base text-gray-700">No description found</span>
 		{/if}
 	{:else}
 		<span class="text-gray-700">{value}</span>
@@ -116,7 +116,7 @@
 <dl class="space-y-4">
 	{#each permittedFieldsList as key}
 		{#if permittedFieldsList.includes(key)}
-			<dt class="text-lg font-semibold text-gray-900 capitalize border-b border-gray-200 pb-1">
+			<dt class="text-base sm:text-lg font-semibold text-gray-900 capitalize border-b border-gray-200 pb-1">
 				{fieldNames[key]}
 			</dt>
 			<dd class="mt-2">{@render valueFormatter(key, data.anime[key as keyof Anime])}</dd>

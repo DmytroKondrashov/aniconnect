@@ -39,11 +39,11 @@
 	});
 </script>
 
-<div class="mb-6 flex justify-center">
-	<div class="w-full max-w-xl p-2">
-		<div class="flex">
+<div class="mb-6 flex justify-center px-4 sm:px-0">
+	<div class="w-full max-w-xl">
+		<div class="flex flex-col sm:flex-row gap-2">
 			<input
-				class="flex-1 w-full rounded-l-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+				class="flex-1 w-full rounded-md sm:rounded-l-md sm:rounded-r-none border border-gray-300 px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
 				type="text"
 				placeholder="Find your anime"
 				bind:value={searchQuery}
@@ -54,7 +54,7 @@
 				}}
 			/>
 			<button
-				class="rounded-r-md bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors"
+				class="rounded-md sm:rounded-l-none sm:rounded-r-md bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors text-base"
 				onclick={() => ($search = searchQuery)}
 			>
 				Search
@@ -67,11 +67,11 @@
 		<span>Loading...</span>
 	{:else if animes}
 		<section>
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+			<div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
 				{#each animes as anime}
 					<AnimeCard class="" {anime} />
 				{:else}
-					<span>No animes found</span>
+					<span class="col-span-2 sm:col-span-full">No animes found</span>
 				{/each}
 			</div>
 		</section>

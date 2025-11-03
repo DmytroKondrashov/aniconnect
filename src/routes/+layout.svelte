@@ -14,7 +14,7 @@
 <div class="page-container flex flex-col min-h-screen">
 	<Navbar />
 	<main class="main-content flex-grow">
-		<div class="max-w-7xl mx-auto px-4 mb-6">
+		<div class="max-w-7xl mx-auto px-2 sm:px-4 mb-6">
 			{@render children?.()}
 		</div>
 	</main>

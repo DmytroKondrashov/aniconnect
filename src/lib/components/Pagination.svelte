@@ -19,23 +19,24 @@
 </nav> -->
 
 <nav
-	class="flex justify-center items-center space-x-1 my-6"
+	class="flex flex-wrap justify-center items-center gap-1 sm:gap-0 sm:space-x-1 my-6 px-4 sm:px-0"
 	role="navigation"
 	aria-label="pagination"
 >
 	<button
-		class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-500"
+		class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md sm:rounded-l-md rounded-r-md sm:rounded-r-none hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-500"
 		disabled={page === 1}
 		onclick={() => (page -= 1)}
 	>
-		Previous
+		<span class="hidden sm:inline">Previous</span>
+		<span class="sm:hidden">Prev</span>
 	</button>
 
 	<ul class="flex space-x-1">
 		{#each $limits as limitVariant}
 			<li>
 				<button
-					class="px-3 py-2 text-sm font-medium border hover:bg-gray-50 hover:text-gray-700 {limit ===
+					class="px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium border hover:bg-gray-50 hover:text-gray-700 {limit ===
 					limitVariant
 						? 'bg-blue-600 text-white border-blue-600'
 						: 'text-gray-500 bg-white border-gray-300'}"
@@ -48,9 +49,10 @@
 	</ul>
 
 	<button
-		class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 hover:text-gray-700"
+		class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md sm:rounded-l-none rounded-r-md sm:rounded-r-md hover:bg-gray-50 hover:text-gray-700"
 		onclick={() => (page += 1)}
 	>
-		Next page
+		<span class="hidden sm:inline">Next page</span>
+		<span class="sm:hidden">Next</span>
 	</button>
 </nav>
